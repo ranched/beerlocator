@@ -1,49 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import List from './components/List.jsx';
-import breweries from  './components/topList.json';
-
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      items: props.breweries
-    };
-  }
-
-  componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: props.breweries
-        });
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
-
-  render () {
-    return (
-      <div>
-        <div>
-          <h1>Beer-By</h1>
-
-          <List items={this.state.items}/>
-        </div>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<App breweries={breweries}/>, document.getElementById('app'));
-
-
-const data = [  
+const data = [
   {
     "name": "Jester King Brewery",
     "address": "13005 Fitzhugh Road",
@@ -122,6 +77,13 @@ const data = [
     "ba_profile_id": 35016
   },
   {
+    "name": "North by Northwest Restaurant & Brewery - South",
+    "address": "5701 W Slaughter Ln",
+    "averageRating": 3.79,
+    "ratingsCount": 13,
+    "ba_profile_id": 37372
+  },
+  {
     "name": "Lazarus Brewing Company",
     "address": "1902 E 6th St",
     "averageRating": 3.76,
@@ -138,7 +100,7 @@ const data = [
   {
     "name": "Friends & Allies Brewing",
     "address": "979 Springdale Rd",
-    "averageRating": 4,
+    "averageRating": 3.71,
     "ratingsCount": 73,
     "ba_profile_id": 44036
   },
@@ -190,6 +152,20 @@ const data = [
     "averageRating": 3.59,
     "ratingsCount": 205,
     "ba_profile_id": 32581
+  },
+  {
+    "name": "4th Tap Brewing Co-op",
+    "address": "10615 Metric Blvd",
+    "averageRating": 3.59,
+    "ratingsCount": 149,
+    "ba_profile_id": 43107
+  },
+  {
+    "name": "Black Star Co-op Pub & Brewery",
+    "address": "7020 Easy Wind Drive",
+    "averageRating": 3.58,
+    "ratingsCount": 316,
+    "ba_profile_id": 24381
   },
   {
     "name": "Uncle Billy's Brew & Que",
@@ -260,27 +236,6 @@ const data = [
     "averageRating": 3.35,
     "ratingsCount": 85,
     "ba_profile_id": 36084
-  },
-  {
-    "name": "North by Northwest Restaurant & Brewery - South",
-    "address": "5701 W Slaughter Ln",
-    "averageRating": "",
-    "ratingsCount": "",
-    "ba_profile_id": ""
-  },
-  {
-    "name": "4th Tap Brewing Co-op",
-    "address": "10615 Metric Blvd",
-    "averageRating": "",
-    "ratingsCount": "",
-    "ba_profile_id": ""
-  },
-  {
-    "name": "Black Star Co-op Pub & Brewery",
-    "address": "7020 Easy Wind Drive",
-    "averageRating": "",
-    "ratingsCount": "",
-    "ba_profile_id": ""
   }
 ]
 
