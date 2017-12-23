@@ -1,8 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-var items = require('../database-mysql');
-// var items = require('../database-mongo');
+var items = require('./db');
 
 var app = express();
 
