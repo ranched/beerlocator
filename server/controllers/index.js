@@ -1,7 +1,7 @@
 var models = require('../models/');
 var db = require('../db/');
 
-module.exports.messages = {
+module.exports.breweries = {
   get: function (req, res) {
     function sendResponse(res, data){
       res.send({results: data});

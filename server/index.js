@@ -1,14 +1,14 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var items = require('./db');
-var router = require('./routes.js');
+//var router = require('./routes.js');
 var controller = require('./controllers');
 var yelpFetch = require('../helpers/searchYelp.js');
 var responses = require('../helpers/responses.js');
 
 var app = express();
 
-var router = require('./routes.js');
+//var router = require('./routes.js');
 
 
 app.use(express.static(__dirname + '/../react-client/dist'));
@@ -17,11 +17,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/items', function(req, res){
-  controller.messages.get(req, res);
+  controller.breweries.get(req, res);
 });
 
 //-- Woring display of Yelp results;
-app.post('/breweries', function(req, res){
+app.post('/breweries', function(rfeq, res){
   console.log('POST REQUEST RECEIVED');
 
   let sendResponse = responses.sendPostResponse.bind(null, res);
@@ -47,17 +47,6 @@ app.post('/breweries', function(req, res){
 
 
 
-
-// app.get('/items', function (req, res) {
-//   items.selectAll(function(err, data) {
-//     if(err) {
-//       res.sendStatus(500);
-//     } else {
-//       res.json(data);
-//       //res.render('working');
-//     }
-//   });
-// });
 
 
 

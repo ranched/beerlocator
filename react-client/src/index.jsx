@@ -11,7 +11,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: props.breweries
+      items: props.breweries,
+      beerLists: []
     };
   }
 
@@ -20,8 +21,9 @@ class App extends React.Component {
       url: '/items', 
       success: (data) => {
         this.setState({
-          items: this.props.breweries
+          items: data.results
         });
+        console.log(data);
       },
       error: (err) => {
         console.log('err', err);
@@ -48,4 +50,5 @@ class App extends React.Component {
 }
 
 // ReactDOM.render(<App breweries={breweries}/>, document.getElementById('app'));
-ReactDOM.render(<App breweries={['Breweries will be displayed here']}/>, document.getElementById('app'));
+// ReactDOM.render(<App breweries={['Breweries will be displayed here']}/>, document.getElementById('app'));
+ReactDOM.render(<App breweries={['Breweries will display here']}/>, document.getElementById('app'));
