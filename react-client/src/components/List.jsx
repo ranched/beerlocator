@@ -13,10 +13,12 @@ const List = (props) => (
       <tbody>
         <tr>
           <td>Brewery</td>
-          <td>Avg. Beer Rating (out of 5)</td>
+          <td>Avg. Beer Rating <br/>(out of 5)</td>
           <td>Ratings Count</td>
         </tr>
-        {props.items.map((item, index) => <ListItem item={item} key={index}/>)}
+      {/*console.log(Array.isArray(props.items), props.items)*/}
+        {Array.isArray(props.items) ? props.items.map((item, index) => <ListItem item={item} key={index}/>) : JSON.parse(props.items).map((item, index) => <ListItem item={item} key={index}/>)}
+        
       </tbody>
     </table>
   </div>

@@ -4,7 +4,7 @@ const config = require('../config.js');
 let getBreweriesByLocation = (zipCode) => {
 
   let options = {
-    uri: 'https://api.yelp.com/v3/businesses/search?term=brewery&location=' + zipCode,
+    uri: 'https://api.yelp.com/v3/businesses/search?radius=24000&categories=breweries&location=' + zipCode,
     headers: {
       'Authorization': config.YELP_TOKEN
     }

@@ -3,7 +3,7 @@ let sendPostResponse = (res, data) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     if(data){
-      console.log('data found to be sent');
+      console.log('sending response');
     }
     res.set({
       'Status': 202,

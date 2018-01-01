@@ -6,7 +6,6 @@ import Search from './components/search.jsx';
 import breweries from  './components/topList.json';
 import JumbotronInstance from './components/jumbotron.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,7 @@ class App extends React.Component {
         this.setState({
           items: data.results
         });
-        console.log(data);
+        //console.log(data);
       },
       error: (err) => {
         console.log('err', err);
@@ -33,7 +32,6 @@ class App extends React.Component {
 
   setBreweries(breweries) {
     this.setState({items: breweries});
-    this.render();
   }
 
   render () {
@@ -42,6 +40,7 @@ class App extends React.Component {
         <div>
           <h1>Beer-By</h1>
           <Search setBreweries={this.setBreweries.bind(this)}/>
+          <i className="icon-spinner icon-spin icon-large"></i>
           <List items={this.state.items}/>
         </div>
       </div>
@@ -51,4 +50,4 @@ class App extends React.Component {
 
 // ReactDOM.render(<App breweries={breweries}/>, document.getElementById('app'));
 // ReactDOM.render(<App breweries={['Breweries will be displayed here']}/>, document.getElementById('app'));
-ReactDOM.render(<App breweries={['Breweries will display here']}/>, document.getElementById('app'));
+ReactDOM.render(<App breweries={[{name: 'Breweries will display here'}]}/>, document.getElementById('app'));
