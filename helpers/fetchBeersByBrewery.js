@@ -1,5 +1,5 @@
 const rp = require('request-promise');
-const config = require('../config.js');
+const config = process.env.NODE_ENV === 'production' ? null : require('../config.js');
 
 const appendName = (obj, name) => (obj['name'] = name);
 
