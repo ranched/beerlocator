@@ -33,27 +33,27 @@ module.exports.breweries = {
     let breweries = [];
       
     checkAPIandSearch.checkAPIandSearch(req)  
-    .then(function(breweries){
+    // .then(function(breweries){
     
-      let promises = [];
-      breweries.forEach(brewery => {
-        promises.push(searchBreweryID.searchBreweryIDbreweryDB(brewery));
-      });
-      return Promise.all(promises);
+    //   let promises = [];
+    //   breweries.forEach(brewery => {
+    //     promises.push(searchBreweryID.searchBreweryIDbreweryDB(brewery));
+    //   });
+    //   return Promise.all(promises);
     
-    })
-    .then(function(breweries){ 
+    // })
+    // .then(function(breweries){ 
     
-      let names = [];
-      for(let i = 0; i < breweries.length; i++){
-        if (breweries[i]){
-        names.push(breweries[i].replace(/Company/g, ''));
-        }
-      }
-      console.log('Breweries after BID search in BDB:');
-      names.forEach(item => console.log('name:', item));
-      return names;
-    })
+    //   let names = [];
+    //   for(let i = 0; i < breweries.length; i++){
+    //     if (breweries[i]){
+    //     names.push(breweries[i].replace(/Company/g, ''));
+    //     }
+    //   }
+    //   console.log('Breweries after BID search in BDB:');
+    //   names.forEach(item => console.log('name:', item));
+    //   return names;
+    // })
     .then(function(names){
 
       let promises = [];
@@ -71,7 +71,8 @@ module.exports.breweries = {
 
       return Promise.all(promises);
 
-    }).then(function(breweryObjs){
+    })
+    .then(function(breweryObjs){
       console.log('breweries to get scores for: ', breweryObjs);
       let promises = [];
 

@@ -4,14 +4,25 @@ import $ from 'jquery';
 import List from './components/List.jsx';
 import Search from './components/search.jsx';
 import breweries from  './components/topList.json';
-import JumbotronInstance from './components/jumbotron.jsx';
+import { PageHeader } from 'react-bootstrap';
+
+const styles = {
+  PageHeader: {
+    marginLeft: '20px',
+    fontFamily: "'Rammetto One', cursive"
+  },
+  // App: {
+  //   background: 'linear-gradient(to right, #ffffff, #abbaab)'
+  // }
+};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       items: props.breweries,
-      beerLists: []
+      beerLists: [],
+      loading: false
     };
   }
 
@@ -34,14 +45,18 @@ class App extends React.Component {
     this.setState({items: breweries});
   }
 
+  setLoadState() {
+    this.setState({loading: !this.state.loading});
+  }
+
+ 
   render () {
     return (
       <div>
         <div>
-          <h1>Beer-By</h1>
-          <Search setBreweries={this.setBreweries.bind(this)}/>
-          <i className="icon-spinner icon-spin icon-large"></i>
-          <List items={this.state.items}/>
+          <PageHeader style={styles.PageHeader}>Beer-by <small>good beer, nearby</small></PageHeader>
+          <Search setLoad={this.setLoadState.bind(this)} setBreweries={this.setBreweries.bind(this)}/>
+          <List items={this.state.items} loadState={this.state.loading}/>
         </div>
       </div>
     )
@@ -50,4 +65,4 @@ class App extends React.Component {
 
 // ReactDOM.render(<App breweries={breweries}/>, document.getElementById('app'));
 // ReactDOM.render(<App breweries={['Breweries will be displayed here']}/>, document.getElementById('app'));
-ReactDOM.render(<App breweries={[{name: 'Breweries will display here'}]}/>, document.getElementById('app'));
+ReactDOM.render(<App style={styles.App} breweries={[{name: 'Breweries will display here'}]}/>, document.getElementById('app'));

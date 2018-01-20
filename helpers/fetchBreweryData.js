@@ -75,7 +75,7 @@ function scrapeBreweryPageBA(html) {
       var $ = cheerio.load(html);
      
 
-
+      var breweryUrl = $('meta[property="og:url"]').attr('content');
       var breweryName = $('h1').text();
       var ratingAndCount = $('#score_box').text().split(/\s+/g);
       var city = $('#info_box a').eq(0).text();
@@ -88,7 +88,8 @@ function scrapeBreweryPageBA(html) {
         avg_rating: ratingAndCount[3].slice(0, ratingAndCount[3].indexOf('/')),
         review_count: ratingAndCount.filter(item => isNumber(item) && !re.test(item) ),
         city: city,
-        state: state
+        state: state,
+        breweryUrl: breweryUrl
       };
 
     }

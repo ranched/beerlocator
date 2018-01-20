@@ -1,5 +1,11 @@
 import React from 'react';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import { Form, FormControl, Button, Grid, Col } from 'react-bootstrap';
+
+const styles = {
+  Form: {
+    marginBottom: '30px'
+  }
+};
 
 class Search extends React.Component {
   constructor(props){
@@ -18,7 +24,7 @@ class Search extends React.Component {
   }
 
   search(api) {
-    {console.log(this.state.zipCode);}
+    this.props.setLoad();
     $.ajax({
       method: "POST",
       url: "http://127.0.0.1:3000/breweries",
@@ -29,25 +35,26 @@ class Search extends React.Component {
     }).done ( reply => {
       console.log("searched with ", this.state.zipCode, " and reply is... ", typeof reply, reply);
       this.props.setBreweries(reply);
+      this.props.setLoad();
     });
   }
 
   render() {
-    return (/* <form action="#" id="search" method="post">
-          <input type="text" name="message" id="message"/>
-          <input type="submit" name="submit" class="submit"/>
-        </form>*/ 
-          <Form inline={true}>
-            Enter
-            <h4>Search for breweries!</h4>
-            <FormControl 
-              className="Zipcode-input"
-              placeholder="zip code"
-              value={this.state.terms} 
-              onChange={this.onChange}
-            />       
-            <Button onClick={this.search.bind(this, 'yelp')}> Search</Button>
-          </Form>
+    return (
+            <Grid>
+              <Col xs={12} md={8}>
+                <Form style={styles.Form} inline={true}>
+                  {/*<h4>Search for breweries!</h4>*/}
+                  <FormControl 
+                    className="Zipcode-input"
+                    placeholder="Enter zipcode"
+                    value={this.state.terms} 
+                    onChange={this.onChange}
+                  />       
+                  <Button bsStyle="warning" onClick={this.search.bind(this, 'yelp')}> Search</Button>
+                </Form>
+              </Col>
+            </Grid>
         )
   }
 }

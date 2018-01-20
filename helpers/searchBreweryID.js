@@ -3,7 +3,7 @@ const config = require('../config.js');
 
 const log = (obj) => {
   let brewObj = JSON.parse(obj).data ? JSON.parse(obj).data[0].name : null;
-  console.log('sID:', brewObj);
+  //console.log('sID:', brewObj);
   return obj;
 };
 const returnFirst = (obj) => JSON.parse(obj).data ? JSON.parse(obj).data[0].name : null;
@@ -14,7 +14,7 @@ let searchBreweryIDbreweryDB = (breweryName) => {
   let options = {
     uri: 'http://api.brewerydb.com/v2/search', 
     qs: {
-      key: config.BEERDB_TOKEN,
+      key: process.env.BEERDB_TOKEN || config.BEERDB_TOKEN,
       type: 'brewery',
       q: breweryName
     }

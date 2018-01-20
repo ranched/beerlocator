@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var items = require('./db');
 //var router = require('./routes.js');
 var controller = require('./controllers');
-
+var PORT = process.env.PORT || 3000;
 
 var app = express();
 
@@ -26,10 +26,7 @@ app.post('/breweries', function(req, res){
 
 
 
-
-
-
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
+app.listen(PORT, function() {
+  console.log('listening on port ' + PORT + '!');
 });
 

@@ -8,7 +8,7 @@ let getBreweryIDbreweryDB = (breweryName) => {
   let options = {
     uri: 'http://api.brewerydb.com/v2/breweries', 
     qs: {
-      key: config.BEERDB_TOKEN,
+      key: process.env.BEERDB_TOKEN || config.BEERDB_TOKEN,
       name: breweryName
     }
   };
