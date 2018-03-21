@@ -25,9 +25,10 @@ class Search extends React.Component {
 
   search(api) {
     this.props.setLoad();
+    const url = process.env.NODE_ENV === 'production' ? `${process.env.IP}:${process.env.PORT}` : '127.0.0.1:3000';
     $.ajax({
       method: "POST",
-      url: "http://127.0.0.1:3000/breweries",
+      url: `http://${url}/breweries`,
       data: { 
         zipCode: this.state.zipCode,
         api: 'yelp' 
