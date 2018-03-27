@@ -1,4 +1,4 @@
-const data = [
+module.exports.data = [
   {
     "name": "Jester King Brewery",
     "address": "13005 Fitzhugh Road",
@@ -271,6 +271,5 @@ const data = [
     "ba_profile_id": 36084,
     "id": 33
   }
-]
+];
 
-module.exports.data = data
