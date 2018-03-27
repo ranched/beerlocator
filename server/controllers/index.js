@@ -1,5 +1,5 @@
 var models = require('../models/'),
-    db = require('../db/'),
+    //db = require('../db/'),
     checkAPIandSearch = require('../../helpers/checkAPIandSearch.js'),
     responses = require('../../helpers/responses.js'),
     getBreweryID = require('../../helpers/getBreweryID.js'),

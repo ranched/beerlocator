@@ -27,18 +27,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: data.results
-        });
-        //console.log(data);
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
+    // $.ajax({
+    //   url: '/items', 
+    //   success: (data) => {
+    //     this.setState({
+    //       items: data.results
+    //     });
+    //     //console.log(data);
+    //   },
+    //   error: (err) => {
+    //     console.log('err', err);
+    //   }
+    // });
   }
 
   setBreweries(breweries) {
