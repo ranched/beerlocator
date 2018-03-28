@@ -25,7 +25,8 @@ class Search extends React.Component {
 
   search(api) {
     this.props.setLoad();
-    const url = process.env.NODE_ENV === 'production' ? `${process.env.IP}:${process.env.PORT}` : '127.0.0.1:3000';
+    const url = process.env.NODE_ENV === 'production' ? `${process.env.IP}` : '127.0.0.1:3000';
+    console.log('url' + url);
     $.ajax({
       method: "POST",
       url: `http://${url}/breweries`,
