@@ -1,10 +1,9 @@
-var util = require('util');
-var express = require('express');
 var bodyParser = require('body-parser');
-//var items = require('./db/index.js');
-//var router = require('./routes.js');
 var controller = require('./controllers');
+var express = require('express');
+var items = require('./db');
 var PORT = process.env.PORT || 3000;
+var util = require('util');
 
 var app = express();
 
